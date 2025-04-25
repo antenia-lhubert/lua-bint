@@ -1725,6 +1725,12 @@ function bint:__tostring()
   return self:tobase(10)
 end
 
+--- Convert a bint to a string when concatenating it to an other string.
+-- @see bint.tostring
+function bint.__concat(a, b)
+  return tostring(a) .. tostring(b)
+end
+
 -- Allow creating bints by calling bint itself
 setmetatable(bint, {
   __call = function(_, x)

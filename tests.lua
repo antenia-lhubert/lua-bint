@@ -105,6 +105,10 @@ local function test(bits, wordbits)
     assert(bint.frombase('AAAAAAAAAAAAAAAAAAA') == nil)
     assert(bint.frombase('AAAAAAAAAAAAAAAAAAA_') == nil)
 
+    assert(bint(9592924) .. '_MyString' == '9592924_MyString')
+    assert('MyString_' .. bint(9592924) == 'MyString_9592924')
+    assert('MyString_' .. bint(9592924) .. "_MyString" == 'MyString_9592924_MyString')
+    
     assert(bint.fromstring(1) == nil)
     assert(bint.eq(bint.fromstring('0xff'), 0xff))
     assert(bint.eq(bint.fromstring('+0xff'), 0xff))
